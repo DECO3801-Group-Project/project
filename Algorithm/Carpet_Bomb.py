@@ -5,8 +5,9 @@ import codecs, json
 
 SEED = 4558421
 
+# Hunter added this comment to line 8
 
-class Landscape:
+class Landscape: # now line 10
 
     def __init__(self, dimensions: (int, int, int), init_map=None):
         self.dimensions = dimensions
