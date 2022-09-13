@@ -1,31 +1,52 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class ChangeCamera : MonoBehaviour
 {
-    public Camera camera_one;
-    public Camera camera_two;
 
-    private void Start()
+    private GameObject Camera_0;
+
+    private GameObject Camera_1;
+
+    void Start()
     {
-        camera_one.enabled = true;
-        camera_two.enabled = false;
+
+        Camera_0 = GameObject.Find("Main Camera");
+
+        Camera_1 = GameObject.Find("Camera");
+
     }
-    private void Update() //通过点击不同的按键实现相机的切换
+
+    bool a = true;
+
+    public void OnClick()
+
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        if (a)
         {
-            camera_one.enabled = false;
-            camera_two.enabled = true;
+
+            a = false;
+
+            Camera_0.SetActive(false);
+
+            Camera_1.SetActive(true);
+
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else
         {
-            camera_one.enabled = true;
-            camera_two.enabled = false;
+
+            a = true;
+
+            Camera_0.SetActive(true);
+
+            Camera_1.SetActive(false);
+
         }
+
     }
 }
-
