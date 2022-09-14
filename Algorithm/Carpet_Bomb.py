@@ -1,15 +1,12 @@
 import numpy as np
-import heapq
 from colorama import Back, init
-import codecs, json
 
 SEED = 4558421
 
-# Hunter added this comment to line 8
 
-class Landscape: # now line 10
+class Landscape:
 
-    def __init__(self, dimensions: (int, int, int), init_map=None):
+    def __init__(self, dimensions, init_map=None):
         self.dimensions = dimensions
         if init_map is None:
             self.grid = np.random.randint(
@@ -19,11 +16,11 @@ class Landscape: # now line 10
         else:
             self.grid = np.array(init_map)
 
-    def is_valid_position(self, coordinates: (int, int)) -> bool:
+    def is_valid_position(self, coordinates) -> bool:
         return 0 <= coordinates[0] < self.dimensions[0] and \
                0 <= coordinates[1] < self.dimensions[1]
 
-    def get_shape(self) -> (int, int):
+    def get_shape(self):
         return self.grid.shape
 
     def get_height(self) -> int:
@@ -58,6 +55,9 @@ class CarpetBombModel:
     def display(self):
         self.landscape.display(self.waterscape)
 
+    def get_shape(self):
+        return self.landscape.get_shape()
+
     def rain(self, pattern=None) -> np.ndarray:
         if pattern is None:
             rain_grid = \
@@ -66,27 +66,32 @@ class CarpetBombModel:
             rain_grid = pattern
         return rain_grid
 
-    def get_neighbours(self, position: (int, int), lower=False)\
+    def get_elevation(self, pos, land=True, water=True):
+        height = 0
+        if land:
+            height += self.landscape.grid[pos]
+        if water:
+            height += self.waterscape.grid[pos]
+        return height
+
+    def get_neighbours(self, position, lower=False)\
             -> list:
         neighbours = []
-        land_grid = self.landscape.grid
-        water_grid = self.waterscape.grid
         for i in range(-1, 2):
             for j in range(-1, 2):
-                n_r = position[0] + i
-                n_c = position[1] + j
-                if (i != 0 or j != 0) and \
-                        self.landscape.is_valid_position((n_r, n_c)) and\
-                        (not lower or
-                         land_grid[position] + water_grid[position]
-                         > land_grid[n_r][n_c] + water_grid[n_r][n_c]):
+                n_pos = (position[0] + i, position[1] + j)
+                center_height = self.get_elevation(position)
+                # if (i != 0 or j != 0) and \
+                if (abs(i) + abs(j) == 1) and \
+                        self.landscape.is_valid_position(n_pos) and\
+                        (not lower or center_height >
+                         self.get_elevation(n_pos)):
                     neighbours.append(
-                        (- land_grid[n_r][n_c] - water_grid[n_r][n_c], (n_r, n_c))
+                        (self.get_elevation(n_pos), n_pos)
                     )
-        # heapq.heapify(neighbours)
         return neighbours
 
-    def disperse(self, rain_grid: np.ndarray, position: (int, int))\
+    def disperse(self, rain_grid: np.ndarray, position)\
             -> np.ndarray:
         neighbours = self.get_neighbours(position, lower=True)
         water_spilled = rain_grid[position]
@@ -97,70 +102,80 @@ class CarpetBombModel:
                 water_spilled / len(neighbours)
         return rain_grid
 
-    def find_ponds(self, rain_grid: np.ndarray) -> list:
-        included = []
-        ponds = []
-        for pos in rain_grid:
-            if rain_grid[pos] > 0 and pos not in included:
-                included.append(pos)
-                pond = self.get_contagiously_connected(
-                    rain_grid, included, pos)
+    def disperse_all(self, rain_grid: np.array):
+        lw_descend = []
+        for row in range(self.get_shape()[0]):
+            for col in range(self.get_shape()[1]):
+                pos = (row, col)
+                height = self.get_elevation(pos)
+                lw_descend.append((height, pos))
+        lw_descend.sort(reverse=True)
 
-                ponds.append(pond)
-        return ponds
+        for height, pos in lw_descend:
+            rain_grid = self.disperse(rain_grid, pos)
 
-    def get_contagiously_connected(
-            self, rain_grid: np.ndarray, included: list,
-            pos, pond=None) -> list:
-        if pond is None:
-            pond = []
-        neighbours = self.get_neighbours(pos)
-        for neighbour in neighbours:
-            if rain_grid[pos] > 0 and pos not in included:
-                included.append(pos)
-                pond.append(neighbour)
-                self.get_contagiously_connected(
-                    rain_grid, included, neighbour, pond=pond)
-        return pond
+        return rain_grid
 
-    def level(self, rain_grid: np.ndarray, pond: list) -> np.ndarray:
-        new_rain_grid = rain_grid.copy()
-        total_rain = sum(rain_grid[pos] for pos in pond)
+    def level(self, rain_grid: np.ndarray) -> np.ndarray:
+        for row in range(self.get_shape()[0]):
+            for col in range(self.get_shape()[1]):
+                pos = (row, col)
+                if rain_grid[pos] <= 0:
+                    continue
+                pond = [pos]
+                pond_boundary = self.get_neighbours(pos)
+                trail = []
+                while rain_grid[pos] > 0:
+                    # as long as rain are not completely distributed
+                    pond_boundary.sort()
+                    step = round(pond_boundary[0][0] - self.get_elevation(pos), 9)
 
-        return new_rain_grid
+                    if step < 0:
+                        # if there is lower land
+                        trail += pond
+                        submerge = pond_boundary.pop(0)
+                        rain_grid[submerge[1]] = rain_grid[pos]
+                        rain_grid[pos] = 0
+                        pos = submerge[1]
+                        pond = [submerge[1]]
+                        pond_boundary = [x for x in self.get_neighbours(submerge[1])
+                                         if x[1] not in pond]
+
+                    elif step > rain_grid[pos] / len(pond):
+                        # if no lower land and no spilling
+                        for pond_spot in pond:
+                            self.waterscape.grid[pond_spot] += rain_grid[pos] / len(pond)
+                        rain_grid[pos] = 0
+
+                    else:
+                        # if no lower land and spilling
+                        if step > 0:
+                            for pond_spot in pond:
+                                self.waterscape.grid[pond_spot] += step
+                            rain_grid[pos] -= step * len(pond)
+                        submerge = pond_boundary.pop(0)
+                        pond.append(submerge[1])
+                        rain_grid[pos] += rain_grid[submerge[1]]
+                        rain_grid[submerge[1]] = 0
+                        pond_boundary += [x for x in self.get_neighbours(submerge[1])
+                                          if x[1] not in pond]
+                        pond_boundary = list(dict.fromkeys(pond_boundary))
+
+        return rain_grid
 
     def tick(self, rain_pattern: np.ndarray):
         rain_grid = self.rain(rain_pattern)
-        rain_height = self.landscape.get_height()
-
-        lw_descend = []
-        for rows in range(len(self.landscape.grid)):
-            for cols in range(len(self.landscape.grid[rows])):
-                pos = (rows, cols)
-                heapq.heappush(
-                    lw_descend, ((- self.landscape.grid[pos]
-                                  - self.waterscape.grid[pos]), pos)
-                )
-
-        for (height, pos) in lw_descend:
-            # if -height < rain_height:
-            #     ponds = self.find_ponds(rain_grid)
-            #     for pond in ponds:
-            #         rain_grid = self.level(rain_grid, pond)
-            #     rain_height = -height
-
-            rain_grid = self.disperse(rain_grid, pos)
-
+        rain_grid = self.disperse_all(rain_grid)
+        rain_grid = self.level(rain_grid)
         self.waterscape.grid += rain_grid
 
 
 if __name__ == "__main__":
     init(wrap=False)
     np.random.seed(SEED)
-    ls = Landscape((10, 10, 20))
-    cbm = CarpetBombModel(ls)
+    cbm = CarpetBombModel(Landscape((5, 5, 50)))
     cbm.display()
     for i in range(10):
         cbm.tick(cbm.rain())
         cbm.display()
-
+        # print("Total water: ", round(np.sum(cbm.waterscape.grid), 3))
