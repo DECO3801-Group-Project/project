@@ -9,6 +9,7 @@ class Landscape:
     def __init__(self, dimensions, init_map=None):
         self.dimensions = dimensions
         if init_map is None:
+            # creates a grid with size (width and height) of [0] and [1], max height of [2]
             self.grid = np.random.randint(
                 self.dimensions[2],
                 size=(self.dimensions[0], self.dimensions[1])
