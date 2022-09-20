@@ -10,6 +10,7 @@ CEILING = SIMULATION_SIZE[2] * 2
 PERIOD = 100
 TICKING = True
 DISPLAY = True
+WATER_THRESHOLD = 0.5 # water will only be shown in print if above threshold
 
 
 class Landscape:
@@ -60,7 +61,7 @@ class Landscape:
         for i in range(self.dimensions[0]):
             for j in range(self.dimensions[1]):
                 if waterscape is not None and \
-                        waterscape.grid[i, j] > 0:
+                        waterscape.grid[i, j] > WATER_THRESHOLD:
                     print(Back.BLUE, end="")
                     value = round(self.grid[i, j] + waterscape.grid[i, j], 1)
                 else:
