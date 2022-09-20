@@ -703,10 +703,22 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT
-    Standalone: CROSS_PLATFORM_INPUT
-    Windows Store Apps: MOBILE_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;dUI_MANAGER
+    CloudRendering: dUI_MANAGER
+    EmbeddedLinux: dUI_MANAGER
+    GameCoreScarlett: dUI_MANAGER
+    GameCoreXboxOne: dUI_MANAGER
+    Lumin: dUI_MANAGER
+    Nintendo Switch: dUI_MANAGER
+    PS4: dUI_MANAGER
+    PS5: dUI_MANAGER
+    Stadia: dUI_MANAGER
+    Standalone: CROSS_PLATFORM_INPUT;dUI_MANAGER
+    WebGL: dUI_MANAGER
+    Windows Store Apps: MOBILE_INPUT;dUI_MANAGER
+    XboxOne: dUI_MANAGER
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;dUI_MANAGER
+    tvOS: dUI_MANAGER
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
