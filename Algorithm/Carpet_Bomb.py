@@ -225,10 +225,10 @@ class CarpetBombModel:
                     submerge = pond_boundary.pop(0)
                     rain_grid[submerge[1]] += rain_grid[pos]
                     rain_grid[pos] = 0
-                    pos = submerge[1]
-                    pond = [submerge[1]]
-                    pond_boundary = [x for x in self.get_neighbours(submerge[1])
-                                     if x[1] not in pond]
+                    # pos = submerge[1]
+                    # pond = [submerge[1]]
+                    # pond_boundary = [x for x in self.get_neighbours(submerge[1])
+                    #                  if x[1] not in pond]
 
                 elif step > rain_grid[pos] / len(pond):
                     # if no lower land and no spilling
@@ -255,12 +255,14 @@ class CarpetBombModel:
 
         return rain_grid
 
-    def tick(self, rain_pattern: np.ndarray) -> None:
+    def tick(self, rain_pattern=None) -> None:
         """
         what happens in 1 unit time
         :param rain_pattern: 2d array representing the density of rain
         """
-        rain_grid = self.rain(rain_pattern)
+        rain_grid = rain_pattern
+        if rain_grid is None:
+            rain_grid = self.rain()
         rain_grid, accumulated = self.disperse_all(rain_grid, self.get_descend())
         rain_grid = self.level(rain_grid, accumulated)
         self.waterscape.grid += rain_grid
@@ -278,7 +280,7 @@ if __name__ == "__main__":
     for unit_time in range(PERIOD):
         if TICKING:
             print("tick ", unit_time + 1)
-        cbm.tick(cbm.rain())
+        cbm.tick()
 
         # insert write to file here
         # cbm.waterscape.grid is the array storing water levels without land elevation
