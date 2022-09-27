@@ -20,7 +20,7 @@ m_EmbeddedPackageManifests:
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: /Users/mac/Desktop/UQ/DECO3801 - Project/flood visualization/Packages
-m_EditorVersion: 2021.3.9f1 (ad3870b89536)
+m_EditorVersion: 2021.3.8f1 (b30333d56e81)
 m_ResolvedPackages:
 - packageId: com.unity.collab-proxy@1.17.2
   testable: 0
@@ -106,6 +106,7 @@ m_ResolvedPackages:
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
+    - 1.17.1
     - 1.17.2
     - 2.0.0-preview.6
     - 2.0.0-preview.8
@@ -162,7 +163,7 @@ m_ResolvedPackages:
     revision: 14d129dcc778f8ea2fdf9d0240b47924e4f0dbb1
     path: 
   unityLifecycle:
-    version: 1.17.2
+    version: 1.17.1
     nextVersion: 
 - packageId: com.unity.feature.development@1.0.1
   testable: 0
