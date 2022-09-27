@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Plugins/CW/FLOW/Examples/Island.unity
+- path: Assets/Plugins/CW/FLOW/Examples/01 Basic Setup.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
