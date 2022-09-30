@@ -2,14 +2,20 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Island_Surface
   m_Shader: {fileID: 4800000, guid: a02b150d68e76e94ba31c180907aa1f2, type: 3}
-  m_ShaderKeywords: _FACETED_ON _FOAM_CUTOUT _STOCHASTIC_ON _TRANSPARENCY_ON
+  m_ValidKeywords:
+  - _ALPHA_OFF
+  - _FACETED_ON
+  - _FOAM_ALPHA
+  - _STOCHASTIC_ON
+  m_InvalidKeywords:
+  - _TRANSPARENCY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -75,9 +81,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _Alpha: 0
+    - _AlphaDepthScale: 0.1
+    - _AlphaMaxSteps: 100
+    - _AlphaStep: 2
     - _AnimationSpeed: 0.5
     - _BumpScale: 1
+    - _CW_DisableFog: 0
     - _Cutoff: 0.5
     - _Density: 0.5
     - _DetailNormalMapScale: 1
@@ -102,6 +114,7 @@ Material:
     - _Range: 25
     - _RangeMax: 15
     - _RangeMin: 0.01
+    - _Sink: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -122,3 +135,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tint: {r: 0, g: 0.45767736, b: 1, a: 1}
+  m_BuildTextureStacks: []
