@@ -14,9 +14,6 @@ namespace FLOW
 
 		[System.Serializable] public class SimulationFloatEvent : UnityEvent<FlowSimulation, float> {}
 
-		private bool floodingStopped = false;
-		private bool drainFlood = false;
-
 		public enum ApplyType
 		{
 			Manually,
@@ -133,7 +130,7 @@ namespace FLOW
 		/// <summary>This stores all activate and enabled <b>FlowModifier</b> instances in the scene.</summary>
 		public static LinkedList<FlowModifier> Instances { get { return instances; } } private static LinkedList<FlowModifier> instances = new LinkedList<FlowModifier>(); private LinkedListNode<FlowModifier> instanceNode;
 
-        private bool primed = true;
+		private bool primed = true;
 		
 		private static Material cachedMaterial_Copy;
 		private static Material cachedMaterial_AddFluid;
@@ -212,42 +209,7 @@ namespace FLOW
 
 				ApplyNow();
 			}
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-				strength *= 10f;
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-				strength /= 10f;
-            }
-
-			if (Input.GetKeyDown("m"))
-            {
-				if (!drainFlood)
-                {
-                    mode = ModeType.RemoveFluid;
-                } else if (drainFlood)
-                {
-					mode = ModeType.AddFluidBelow;
-                }
-				drainFlood = !drainFlood;
-            }
-
-            if (Input.GetKeyDown("p"))
-            {
-				if (!floodingStopped)
-                {
-                    apply = ApplyType.Manually;
-                } else if (floodingStopped)
-                {
-                    apply = ApplyType.Continuously;
-                }
-				floodingStopped = !floodingStopped;
-            }
-
-        }
+		}
 
 		/// <summary>This method will apply this region to all volumes in the scene using the specified <b>Strength</b> value.</summary>
 		[ContextMenu("Apply Now")]
