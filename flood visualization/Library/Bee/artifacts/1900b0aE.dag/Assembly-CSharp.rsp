@@ -118,6 +118,7 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_INPUT_SYSTEM
+-define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
@@ -795,6 +796,8 @@
 "Assets/Doozy/_Examples/E22 - Popup - without Buttons/ShowSimplePopup.cs"
 "Assets/Doozy/_Examples/E23 - Popup - with One Button/ShowOneButtonPopup.cs"
 "Assets/Doozy/_Examples/E24 - Popup - with Two Buttons/ShowTwoButtonsPopup.cs"
+"Assets/Scenes/BackMain.cs"
+"Assets/Scenes/cameraMove.cs"
 "Assets/Scenes/Mainmenu.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
