@@ -36,7 +36,7 @@ namespace FLOW
 		{
 			if (onVolume != null)
 			{
-				onVolume.Invoke(sampleArea.TotalFluidVolume);
+				onVolume.Invoke(sampleArea.DeepestFluidDepth);
 			}
 		}
 	}
