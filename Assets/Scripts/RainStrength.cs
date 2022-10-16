@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RainStrength : MonoBehaviour
 {
-    public GameObject Rain;
+    Scrollbar bar;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,6 @@ public class RainStrength : MonoBehaviour
     }
     public void changeStrength()
     {
-        // Rain.strength += 0.01;
+        bar = gameObject.GetComponent<Scrollbar>();
     }
 }

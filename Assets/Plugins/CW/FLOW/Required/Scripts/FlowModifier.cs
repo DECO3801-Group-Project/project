@@ -2,9 +2,11 @@
 using UnityEngine.Events;
 using System.Collections.Generic;
 using CW.Common;
+using UnityEngine.UI;
 
 namespace FLOW
 {
+	
 	/// <summary>This component allows you to modify a small area of a fluid. For example, to add fluid, remove fluid, etc.</summary>
 	[HelpURL(FlowCommon.HelpUrlPrefix + "FlowModifier")]
 	[AddComponentMenu(FlowCommon.ComponentMenuPrefix + "Modifier")]
@@ -201,6 +203,7 @@ namespace FLOW
 			instances.Remove(instanceNode); instanceNode = null;
 		}
 
+
 		protected virtual void Update()
 		{
 			if (apply == ApplyType.Once && primed == true)
@@ -228,6 +231,8 @@ namespace FLOW
 				}
 				
 			}
+		
+			
 
 		}
 
