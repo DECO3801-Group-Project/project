@@ -552,7 +552,7 @@ MonoBehaviour:
   MinValue: 0
   MaxValue: 1
   WholeNumbers: 0
-  Value: 0.242
+  Value: 0.154
 --- !u!1 &410894385
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,11 +672,11 @@ MonoBehaviour:
         Vibration: 8
         Elasticity: 1
         FadeOutShake: 0
-      FromValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
-      ToValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      FromValue: {r: 0, g: 0, b: 0, a: 0.49019608}
+      ToValue: {r: 0, g: 0, b: 0, a: 0.49019608}
       CurrentValue: {r: 0.9686275, g: 0.20784315, b: 0.39607847, a: 1}
       Enabled: 1
-      StartColor: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      StartColor: {r: 0, g: 0, b: 0, a: 0.49019608}
       FromReferenceValue: 1
       ToReferenceValue: 0
       FromCustomValue: {r: 1, g: 1, b: 1, a: 1}
@@ -754,11 +754,11 @@ MonoBehaviour:
         Vibration: 8
         Elasticity: 1
         FadeOutShake: 0
-      FromValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
-      ToValue: {r: 1, g: 1, b: 1, a: 0.49019608}
+      FromValue: {r: 0, g: 0, b: 0, a: 0.49019608}
+      ToValue: {r: 0.1, g: 0.1, b: 0.1, a: 0.49019608}
       CurrentValue: {r: 0.9762466, g: 0.40022412, b: 0.53462934, a: 1}
       Enabled: 1
-      StartColor: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      StartColor: {r: 0, g: 0, b: 0, a: 0.49019608}
       FromReferenceValue: 1
       ToReferenceValue: 0
       FromCustomValue: {r: 1, g: 1, b: 1, a: 1}
@@ -836,11 +836,11 @@ MonoBehaviour:
         Vibration: 8
         Elasticity: 1
         FadeOutShake: 0
-      FromValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
-      ToValue: {r: 0.8686275, g: 0.8686275, b: 0.8686275, a: 0.49019608}
+      FromValue: {r: 0, g: 0, b: 0, a: 0.49019608}
+      ToValue: {r: 0, g: 0, b: 0, a: 0.49019608}
       CurrentValue: {r: 0.93927187, g: 0.037198782, b: 0.24768251, a: 1}
       Enabled: 1
-      StartColor: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      StartColor: {r: 0, g: 0, b: 0, a: 0.49019608}
       FromReferenceValue: 1
       ToReferenceValue: 0
       FromCustomValue: {r: 1, g: 1, b: 1, a: 1}
@@ -918,11 +918,11 @@ MonoBehaviour:
         Vibration: 8
         Elasticity: 1
         FadeOutShake: 0
-      FromValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
-      ToValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      FromValue: {r: 0, g: 0, b: 0, a: 0.49019608}
+      ToValue: {r: 0, g: 0, b: 0, a: 0.49019608}
       CurrentValue: {r: 1, g: 0.17647064, b: 0.3686275, a: 1}
       Enabled: 1
-      StartColor: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      StartColor: {r: 0, g: 0, b: 0, a: 0.49019608}
       FromReferenceValue: 1
       ToReferenceValue: 0
       FromCustomValue: {r: 1, g: 1, b: 1, a: 1}
@@ -1000,11 +1000,11 @@ MonoBehaviour:
         Vibration: 8
         Elasticity: 1
         FadeOutShake: 0
-      FromValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
-      ToValue: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0}
+      FromValue: {r: 0, g: 0, b: 0, a: 0.49019608}
+      ToValue: {r: 0, g: 0, b: 0, a: 0}
       CurrentValue: {r: 0, g: 0, b: 0, a: 0}
       Enabled: 1
-      StartColor: {r: 0.9686275, g: 0.9686275, b: 0.9686275, a: 0.49019608}
+      StartColor: {r: 0, g: 0, b: 0, a: 0.49019608}
       FromReferenceValue: 1
       ToReferenceValue: 0
       FromCustomValue: {r: 1, g: 1, b: 1, a: 1}
@@ -1085,7 +1085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &508880678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1294,14 +1294,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.66042185, g: 0.78775805, b: 0.9150943, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 062c382dad90773408f926e0fc2c5dd2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3506,7 +3506,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.242, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5728,14 +5728,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7169812, g: 0.6121396, b: 0.6121396, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 062c382dad90773408f926e0fc2c5dd2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -25,9 +25,9 @@ public class Loading : MonoBehaviour
 
         while (!operation.isDone)
         {
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
-            LoadingBar.value = progressValue;
-            progressText.text = progressValue * 100f + "%";
+
+            LoadingBar.value = operation.progress;
+            progressText.text = operation.progress * 100f + "%";
             yield return null;
         }
     }
