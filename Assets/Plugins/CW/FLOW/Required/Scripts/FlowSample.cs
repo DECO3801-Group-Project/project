@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using System.Collections.Generic;
 using CW.Common;
+using UnityEngine.SceneManagement;
 
 namespace FLOW
 {
@@ -220,7 +221,9 @@ namespace FLOW
 		{
 			if(Submersion == 1 && FluidDepth > 2)
 			{
-				Application.LoadLevel(0);
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 			}
 		}
 
