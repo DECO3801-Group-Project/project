@@ -5,10 +5,12 @@ using UnityEngine;
 public class ChangeView : MonoBehaviour
 {
     public GameObject mainCamera;
-    public GameObject palyerView;
+    public GameObject playerView;
 
     public GameObject main;
     public GameObject player;
+
+    public GameObject waypoints;
     
     // Start is called before the first frame update
     void Start()
@@ -35,13 +37,16 @@ public class ChangeView : MonoBehaviour
             mainCamera.SetActive(true);
         }
         
-        if (palyerView.activeInHierarchy == true)
+        if (playerView.activeInHierarchy == true)
         {
             player.SetActive(false);
-            palyerView.SetActive(false);
+            playerView.SetActive(false);
+            waypoints.SetActive(false);
         } else {
             player.SetActive(true);
-            palyerView.SetActive(true);
+            playerView.SetActive(true);
+            waypoints.SetActive(true);
+            waypoints.GetComponent<SetupWaypoints>().Path();
         }
     }
 

@@ -4,35 +4,17 @@ using UnityEngine;
 
 public class MainCemraMove : MonoBehaviour
 {
-    // private Vector3 cameraPosition;
-
-    // public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        // cameraPosition = this.transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKey(KeyCode.W)){
-        //     cameraPosition.y -= speed/50;
-        // }
 
-        // if(Input.GetKey(KeyCode.S)){
-        //     cameraPosition.y += speed/50;
-        // }
-
-        // if(Input.GetKey(KeyCode.A)){
-        //     cameraPosition.x += speed/50;
-        // }
-
-        // if(Input.GetKey(KeyCode.D)){
-        //     cameraPosition.x -= speed/50;
-        // }
-        // this.transform.position = cameraPosition; 
         
     }
 
