@@ -49,6 +49,10 @@ public class SetupWaypoints : MonoBehaviour
 
     void Update()
     {
+		if (current == null || waypoints == null)
+		{
+			return;
+		}
 		if (current > -1 && GetHorizontalDistance(player.transform.position, waypoints[current].transform.position) < check_distance && current < waypoints.Length - 1)
 		{
 			waypoints[current].GetComponent<MeshRenderer>().enabled = false;

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//inspired by https://www.youtube.com/watch?v=f473C43s8nE
 public class MoveCamera : MonoBehaviour
 {
     [Header("Camera Position (use cameraPos object)")]

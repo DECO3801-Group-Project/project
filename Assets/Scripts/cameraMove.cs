@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//inspired https://forum.unity.com/threads/how-to-make-camera-move-in-a-way-similar-to-editor-scene.524645/
 public class cameraMove : MonoBehaviour
 {
     private Vector3 m_camRot;
@@ -23,7 +24,7 @@ public class cameraMove : MonoBehaviour
         m_camTransform = Camera.main.transform;
         m_camRot = Camera.main.transform.eulerAngles;
     }
-    #region ������������ת
+    #region 
     void CameraRotate_Mouse()
     {
         if (Input.GetMouseButton(1))
@@ -62,7 +63,6 @@ public class cameraMove : MonoBehaviour
         }
 
 
-
         if (Input.GetKey(KeyCode.W))
         {
             z_m = z_m + Time.deltaTime * moveSpeed;
@@ -73,7 +73,6 @@ public class cameraMove : MonoBehaviour
             z_m = 0;
 
         }
-
 
         if (Input.GetKey(KeyCode.S))
         {
@@ -86,7 +85,6 @@ public class cameraMove : MonoBehaviour
 
         }
 
-
         if (Input.GetKey(KeyCode.A))
         {
             x_m = x_m - Time.deltaTime * moveSpeed;
@@ -98,7 +96,6 @@ public class cameraMove : MonoBehaviour
 
         }
 
-
         if (Input.GetKey(KeyCode.D))
         {
             x_m = x_m + Time.deltaTime * moveSpeed;
@@ -109,9 +106,6 @@ public class cameraMove : MonoBehaviour
             x_m = 0;
 
         }
-
-
-
 
     }
     void Update()

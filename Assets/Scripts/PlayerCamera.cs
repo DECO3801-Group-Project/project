@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//inspired by https://www.youtube.com/watch?v=f473C43s8nE
 public class PlayerCamera : MonoBehaviour
 {
     //multipliers which can be used to adjust the sensitivity of the camera
