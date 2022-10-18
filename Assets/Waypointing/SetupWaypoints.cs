@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Doozy.Runtime.UIManager.Components;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class SetupWaypoints : MonoBehaviour
 {
 	public GameObject player;
@@ -49,22 +51,22 @@ public class SetupWaypoints : MonoBehaviour
 
     void Update()
     {
-		if (current == null || waypoints == null)
+		if (waypoints == null)
 		{
 			return;
 		}
-		if (current > -1 && GetHorizontalDistance(player.transform.position, waypoints[current].transform.position) < check_distance && current < waypoints.Length - 1)
+		if (current > -1 && GetHorizontalDistance(player.transform.position, waypoints[current].transform.position) < check_distance && current < waypoints.Length)
 		{
 			waypoints[current].GetComponent<MeshRenderer>().enabled = false;
 			current += 1;
+			if (current == waypoints.Length) 
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				Application.LoadLevel(0);
+			}
 			waypoints[current].GetComponent<MeshRenderer>().enabled = true;
 			
-		}
-		if (current == waypoints.Length - 1) 
-		{
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
-			Application.LoadLevel(0);
 		}
     }
 }

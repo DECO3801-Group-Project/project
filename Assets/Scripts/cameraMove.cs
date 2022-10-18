@@ -5,9 +5,9 @@ using UnityEngine;
 //inspired https://forum.unity.com/threads/how-to-make-camera-move-in-a-way-similar-to-editor-scene.524645/
 public class cameraMove : MonoBehaviour
 {
-    private Vector3 m_camRot;
-    private Transform m_camTransform;
-    public float m_rotateSpeed = 1;
+    private Vector3 camRot;
+    private Transform camTransform;
+    public float rotateSpeed = 1;
 
 
     public float m_speed = 1.5f;
@@ -21,10 +21,10 @@ public class cameraMove : MonoBehaviour
 
     void Start()
     {
-        m_camTransform = Camera.main.transform;
-        m_camRot = Camera.main.transform.eulerAngles;
+        camTransform = Camera.main.transform;
+        camRot = Camera.main.transform.eulerAngles;
     }
-    #region 
+    // #region 
     void CameraRotate_Mouse()
     {
         if (Input.GetMouseButton(1))
@@ -33,20 +33,20 @@ public class cameraMove : MonoBehaviour
             float rh = Input.GetAxis("Mouse X");
             float rv = Input.GetAxis("Mouse Y");
            
-            m_camRot.x -= rv * m_rotateSpeed;
-            m_camRot.y += rh * m_rotateSpeed;
+            camRot.x -= rv * rotateSpeed;
+            camRot.y += rh * rotateSpeed;
         }
-        m_camTransform.eulerAngles = m_camRot;
+        camTransform.eulerAngles = camRot;
         if (Input.GetMouseButton(2))
         {
             float rh = Input.GetAxis("Mouse X");
             float rv = Input.GetAxis("Mouse Y");
-            //float mscrollWheelouseS = Input.GetAxis("Mouse ScrollWheel");
-            transform.Translate(transform.up * -rv * m_rotateSpeed + transform.right * -rh * m_rotateSpeed, Space.World);
+            
+            transform.Translate(transform.up * -rv * rotateSpeed + transform.right * -rh * rotateSpeed, Space.World);
         }
 
     }
-    #endregion
+    // #endregion
     void PlayerMove()
     {
         moveSpeed = m_speed;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CW.Common;
 using UnityEngine.UI;
 
+//216-232 is the codes we add to this script
 namespace FLOW
 {
 	
@@ -232,7 +233,7 @@ namespace FLOW
 				
 			}
 		
-			
+			/* CATSAW above THE BELOW CODE (IN THIS FUNCTION) */
 
 		}
 
