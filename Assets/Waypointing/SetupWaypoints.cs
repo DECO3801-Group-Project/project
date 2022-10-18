@@ -62,6 +62,8 @@ public class SetupWaypoints : MonoBehaviour
 		}
 		if (current == waypoints.Length - 1) 
 		{
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 			Application.LoadLevel(0);
 		}
     }
